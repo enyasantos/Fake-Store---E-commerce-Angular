@@ -1,0 +1,27 @@
+<section
+  class="flex items-center justify-between gap-4 p-4 bg-gray-100 px-10 py-2"
+>
+  <div
+    class="border-4 flex flex-col space-y-0 leading-tight w-[68px] items-center"
+  >
+    <p class="uppercase font-bold">Faker</p>
+    <p class="uppercase font-medium">Store</p>
+  </div>
+  <nav class="flex gap-4">
+    @for(category of categories; track $index) {
+    <a routerLink="/category/{{ category }}" class="uppercase">{{
+      category
+    }}</a>
+    }
+  </nav>
+  <div class="flex gap-4">
+    <a routerLink="/cart" class="relative flex items-center gap-2">
+      <ng-icon name="bootstrapCart3" class="text-xl" />
+      <span
+        class="absolute bg-black text-white rounded-full w-3 text-center text-[10px] bottom-0 -right-1"
+        >{{ cartItems }}</span
+      >
+    </a>
+    <a routerLink="/login">Login</a>
+  </div>
+</section>

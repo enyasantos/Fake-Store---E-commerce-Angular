@@ -1,6 +1,10 @@
-# FakeStore
+# Fake Store - E-commerce Angular
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+
+## Description
+
+Fake Store is an e-commerce application developed with Angular that simulates an online shopping platform. This project allows users to view products, add items to the cart, and navigate paginated pages, providing a realistic shopping experience. The application connects to an external product API, offering a simple and modern interface to explore, filter, and manage cart items. It's ideal for those looking to practice front-end development concepts with Angular and create dynamic interfaces for a fictional online store.
 
 ## Development server
 
