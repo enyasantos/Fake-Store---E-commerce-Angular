@@ -1,1 +1,79 @@
+<div
+  class="absolute bg-white shadow-lg w-[420px] h-screen z-20 top-0 right-0 p-5 flex flex-col"
+>
+  <div class="flex justify-between items-center border-b border-gray-200 pb-3">
+    <h3 class="text-xl font-semibold">🛒 Seu Carrinho</h3>
+    <button
+      (click)="closeCart.emit()"
+      class="text-black hover:text-gray-700 cursor-pointer"
+    >
+      ✖
+    </button>
+  </div>
 
+  <!-- Lista de Itens -->
+  <div class="flex-1 overflow-y-auto mt-3">
+    <div
+      *ngIf="cartService.cart().items.length === 0"
+      class="text-center text-gray-500"
+    >
+      Seu carrinho está vazio.
+    </div>
+
+    <div
+      *ngFor="let product of cartService.cart().items"
+      class="flex items-center gap-4 p-4 border-b border-gray-200"
+    >
+      <!-- Imagem do Produto -->
+      <img
+        [src]="product.image"
+        [alt]="product.title"
+        class="w-16 h-24 object-contain"
+      />
+
+      <!-- Informações do Produto -->
+      <div class="flex-1">
+        <h4 class="text-sm font-medium">{{ product.title }}</h4>
+        <p class="text-gray-600 text-sm">R$ {{ product.price }}</p>
+
+        <!-- Controle de Quantidade -->
+        <div class="flex items-center mt-2">
+          <button
+            (click)="dropItem(product.id)"
+            class="cursor-pointer px-2 py-1 border border-gray-300 rounded-l bg-gray-100 hover:bg-gray-200"
+          >
+            −
+          </button>
+          <span class="px-3 text-sm">{{ product.quantity }}</span>
+          <button
+            (click)="addItem(product)"
+            class="cursor-pointer px-2 py-1 border rounded-r border-gray-300 bg-gray-100 hover:bg-gray-200"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <!-- Botão de Remover -->
+      <button
+        (click)="removeItem(product.id)"
+        class="text-red-500 hover:text-red-700 cursor-pointer"
+      >
+        <ng-icon name="bootstrapTrash" class="text-xl" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Rodapé do Carrinho -->
+  <div class="border-t border-gray-200 pt-3">
+    <div class="flex justify-between font-medium text-lg">
+      <span>Total:</span>
+      <span>R$ {{ cartService.cart().totalAmount.toFixed(2) }}</span>
+    </div>
+    <button
+      class="w-full bg-blue-600 text-white py-2 mt-3 rounded-md hover:bg-blue-700"
+    >
+      Finalizar Compra
+    </button>
+  </div>
+</div>

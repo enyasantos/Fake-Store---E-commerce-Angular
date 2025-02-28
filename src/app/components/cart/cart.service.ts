@@ -45,4 +45,23 @@ export class CartService {
       return currentCart;
     });
   }
+
+  dropItem(productId: number) {
+    this.cart.update((currentCart) => {
+      const item = currentCart.items.find((i) => i.id === productId);
+
+      if (item) {
+        currentCart.totalAmount -= item.price;
+        currentCart.totalItemsCount -= 1;
+        item.quantity -= 1;
+        if (item.quantity === 0) {
+          currentCart.items = currentCart.items.filter(
+            (i) => i.id !== productId
+          );
+        }
+      }
+
+      return currentCart;
+    });
+  }
 }
