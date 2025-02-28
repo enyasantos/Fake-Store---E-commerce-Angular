@@ -10,7 +10,6 @@
       <ng-container *ngFor="let product of products">
         <app-item
           [product]="product"
-          (addToCart)="handleAddToCart($event)"
           class="transition-transform transform hover:scale-105"
         />
       </ng-container>

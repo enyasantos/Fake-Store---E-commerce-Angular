@@ -44,8 +44,4 @@ export class ItemsComponent implements OnInit, OnChanges {
         this.products = [...new Set([...this.products, ...products])];
       });
   }
-
-  handleAddToCart(event: { productId: number; quantity: number }) {
-    console.log(event.productId, event.quantity);
-  }
 }

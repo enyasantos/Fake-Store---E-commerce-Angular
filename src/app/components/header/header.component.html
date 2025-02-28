@@ -19,7 +19,7 @@
       <ng-icon name="bootstrapCart3" class="text-xl" />
       <span
         class="absolute bg-black text-white rounded-full w-3 text-center text-[10px] bottom-0 -right-1"
-        >{{ cartItems }}</span
+        >{{ cartService.cart().totalItemsCount }}</span
       >
     </a>
     <a routerLink="/login">Login</a>

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderService } from './header.service';
 import { CommonModule } from '@angular/common';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { bootstrapCart3 } from '@ng-icons/bootstrap-icons';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,14 @@ import { bootstrapCart3 } from '@ng-icons/bootstrap-icons';
   styleUrl: './header.component.css',
   viewProviders: [provideIcons({ bootstrapCart3 })],
 })
-export class HeaderComponent {
-  constructor(private readonly service: HeaderService) {}
-
+export class HeaderComponent implements OnInit {
+  cartItems = 0;
   categories: string[] = [];
-  cartItems: number = 0;
+
+  constructor(
+    private readonly service: HeaderService,
+    public readonly cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.service.getCategories().subscribe((categories) => {

@@ -19,7 +19,7 @@
   <div class="flex flex-col items-center">
     <p class="text-xl font-bold text-indigo-600">R$ {{ product.price }}</p>
     <button
-      (click)="addToCart.emit({ productId: product.id, quantity: 1 })"
+      (click)="addItem(product)"
       class="cursor-pointer mt-3 px-5 py-2 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300"
     >
       Add to Cart
